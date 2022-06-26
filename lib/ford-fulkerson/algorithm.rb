@@ -18,7 +18,8 @@ module FordFulkerson
 
             # Reducing route by value affects others routes
             # if they have the same edges in it;
-            # This common edges will be reduced for all routes
+            # This common edges will be reduced for all routes.
+            # ( It's one edge object in all routes )
             reduce_route_by_value(min_value)
             result += min_value
           end

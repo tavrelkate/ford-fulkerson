@@ -62,7 +62,7 @@ module FordFulkerson
 
           value = from_node.edges[node_to]
 
-          # Dont dulicate existing routes! 
+          # Dont dulicate existing routes! Read why: FordFulkerson::Algorithm:19
           route << (
             find_existing_route(from_node, node_to) ||
             create_new_edge(from_node, node_to, value)
