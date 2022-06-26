@@ -15,7 +15,7 @@ First of all you should define `nodes`:
     node_5 = FordFulkerson::Node.new('5')
     node_6 = FordFulkerson::Node.new('S2') # consumer
 
-Then we'll add edges to this nodes. The `FordFulkerson::Node` add_edge takes exactly two arguments: an object of `FordFulkerson::Node` (node), and a value of edge to between nodes
+Then we'll add edges to this nodes. The `FordFulkerson::Node` `add_edge` takes exactly two arguments: an object of `FordFulkerson::Node` (node), and a value of edge between nodes
 
     node_0.add_edge(node_1, 10)
     node_0.add_edge(node_3, 2)
@@ -33,7 +33,6 @@ Then we'll add edges to this nodes. The `FordFulkerson::Node` add_edge takes exa
 
     node_5.add_edge(node_6, 13)
 
-The `Merkle::HashTree` constructor takes exactly two arguments: an object 
 
 Once we finished creating nodes we have to add it inside one array obj. NOTE: put #provider-node as first element and #consumer-node as last one:
 
