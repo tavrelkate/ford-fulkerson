@@ -3,6 +3,12 @@ The Ford–Fulkerson method or Ford–Fulkerson algorithm (FFA) is a greedy algo
 The idea behind the algorithm is as follows: as long as there is a path from the source (start node) to the sink (end node), with available capacity on all edges in the path, we send flow along one of the paths. Then we find another path, and so on. A path with available capacity is called an augmenting path.
 
 
+
+
+
+
+![alt text](https://i0.wp.com/algorithms.tutorialhorizon.com/files/2018/12/Max-Flow-Graph.png?resize=643%2C429)
+
 ## Basic Usage
 
 First of all you should define `nodes`:
