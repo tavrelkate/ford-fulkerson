@@ -13,7 +13,7 @@ The idea behind the algorithm is as follows: as long as there is a path from the
 
 First of all you should define `nodes`:
 
-    node_0 =  FordFulkerson::Node.new('0') # provider
+    node_0  = FordFulkerson::Node.new('0') # provider
     node_1  = FordFulkerson::Node.new('1')
     node_2  = FordFulkerson::Node.new('2')
     node_3  = FordFulkerson::Node.new('3')
