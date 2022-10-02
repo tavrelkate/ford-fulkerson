@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require_relative 'dfs.rb'
+
+require_relative 'dfs'
 
 module FordFulkerson
   module Algorithm
@@ -8,12 +9,13 @@ module FordFulkerson
         routes = DFS.build_routes(nodes)
 
         until routes.empty?
-          result = routes.each_with_index.inject(result ||= 0) do |result, route_and_index| 
-            @route, index = route_and_index.first, route_and_index.last
+          result = routes.each_with_index.inject(result ||= 0) do |result, route_and_index|
+            @route = route_and_index.first
+            index = route_and_index.last
 
             # If route has 0 value it cant provide traffic so it's useless
             routes.delete_at(index) if route_has_any_zero_value?
-           
+
             min_value = find_min_route_value
 
             # Reducing route by value affects others routes
@@ -25,7 +27,7 @@ module FordFulkerson
           end
         end
 
-        return result
+        result
       end
 
       attr_reader :route
@@ -37,7 +39,7 @@ module FordFulkerson
       end
 
       def reduce_route_by_value(value)
-        route.map { |r|  r.edges.each{ |k, v|  r.edges[k] = (v - value) } }
+        route.map { |r|  r.edges.each { |k, v| r.edges[k] = (v - value) } }
       end
 
       def find_min_route_value

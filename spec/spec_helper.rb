@@ -2,4 +2,3 @@
 
 require_relative '../lib/ford-fulkerson/algorithm'
 require_relative '../lib/ford-fulkerson/node'
-

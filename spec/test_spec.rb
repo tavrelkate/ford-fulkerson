@@ -13,7 +13,7 @@ describe FordFulkerson::Algorithm do
     node_4  = FordFulkerson::Node.new('4')
     node_5  = FordFulkerson::Node.new('5')
     node_s2 = FordFulkerson::Node.new('S2') # consumer
-  
+
     node_s1.add_edge(node_1, 10)
     node_s1.add_edge(node_3, 2)
     node_s1.add_edge(node_4, 4)
@@ -27,7 +27,7 @@ describe FordFulkerson::Algorithm do
 
     let(:edges) do
       nodes = [
-        node_s1, 
+        node_s1,
         node_1,
         node_2,
         node_3,
@@ -38,6 +38,41 @@ describe FordFulkerson::Algorithm do
     end
 
     let(:valid_result) { 14 }
+
+    it 'Returns valid result' do
+      expect(subject).to eql(valid_result)
+    end
+  end
+
+  context '2 example' do
+    node_0 =  FordFulkerson::Node.new('0') # provider
+    node_1  = FordFulkerson::Node.new('1')
+    node_2  = FordFulkerson::Node.new('2')
+    node_3  = FordFulkerson::Node.new('3')
+    node_4  = FordFulkerson::Node.new('4')
+    node_5  = FordFulkerson::Node.new('5') # consumer
+
+    node_0.add_edge(node_1, 7)
+    node_0.add_edge(node_2, 8)
+    node_1.add_edge(node_2, 2)
+    node_1.add_edge(node_3, 5)
+    node_2.add_edge(node_4, 10)
+    node_3.add_edge(node_4, 2)
+    node_3.add_edge(node_5, 3)
+    node_4.add_edge(node_5, 12)
+
+    let(:valid_result) { 15 }
+
+    let(:edges) do
+      [
+        node_0,
+        node_1,
+        node_2,
+        node_3,
+        node_4,
+        node_5
+      ]
+    end
 
     it 'Returns valid result' do
       expect(subject).to eql(valid_result)
@@ -57,7 +92,7 @@ describe FordFulkerson::Algorithm do
 
     let(:edges) do
       [
-        node_s1_1, 
+        node_s1_1,
         node_1_1,
         node_2_1,
         node_s2_1

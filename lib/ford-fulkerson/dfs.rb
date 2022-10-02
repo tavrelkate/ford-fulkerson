@@ -6,11 +6,12 @@ module FordFulkerson
       def build_routes(nodes)
         return [] if nodes.empty?
 
-        @provider, @consumer = nodes.first, nodes.last
+        @provider = nodes.first
+        @consumer = nodes.last
 
-        @routes          = Array.new
-        @existing_routes = Hash.new
-        @current_stack   = Array.new
+        @routes          = []
+        @existing_routes = {}
+        @current_stack   = []
 
         @current_stack << @current_node = @provider
 
@@ -30,10 +31,8 @@ module FordFulkerson
           # (#provider) :-> we have no nodes to go since all neighbor nodes are viseted
           return @routes if current_node_producer? && !not_visited_node
 
-
-          
           if not_visited_node
-            # Go deeper to #not_visited_node 
+            # Go deeper to #not_visited_node
             not_visited_node.mark_as_visited(history_line_identifier)
 
             @current_stack << @current_node = not_visited_node
@@ -49,8 +48,8 @@ module FordFulkerson
       end
 
       # Finding not visited neighbor node with current history_line_identifier.
-      # We use history_line_identifier because we can came in the same node from 
-      # two different nodes (or more..). 
+      # We use history_line_identifier because we can came in the same node from
+      # two different nodes (or more..).
       # The idea is to dont mark as visited for both at the same time if we were only form one of them
       def unvisited_neighbor_node
         @current_node.find_not_visited_node_in_edges(history_line_identifier)
@@ -58,7 +57,8 @@ module FordFulkerson
 
       def build_route
         @current_stack.each_cons(2).inject([]) do |route, cons|
-          from_node, node_to = cons.first,  cons.last
+          from_node = cons.first
+          node_to = cons.last
 
           value = from_node.edges[node_to]
 
